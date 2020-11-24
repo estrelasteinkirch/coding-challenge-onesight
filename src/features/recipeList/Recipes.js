@@ -21,11 +21,11 @@ export default function Recipes() {
         onChange={(option) => dispatch(saveRecipesAsync(option.value))}
       />
       <table>
-        
-        {recipes.map((recipe) => (
-          <Recipe recipe={recipe} />
-        ))}
-        
+        <tbody>
+          {recipes.map((recipe) => (
+            <Recipe recipe={recipe} />
+          ))}
+        </tbody>
       </table>
     </div>
   );

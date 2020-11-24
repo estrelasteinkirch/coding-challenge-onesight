@@ -1,6 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import RecipeDetails from "./features/recipeDetails/RecipeDetails";
 import Recipes from "./features/recipeList/Recipes";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       <div>
         <Switch>
           <Route path="/receitas/:id">
-            <h2>Receita Número 1</h2>
+            <RecipeDetails />
           </Route>
           <Route path="/receitas">
             <Recipes />

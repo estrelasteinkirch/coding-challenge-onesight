@@ -15,7 +15,6 @@ export const recipesSlice = createSlice({
 export const { saveRecipes } = recipesSlice.actions;
 
 export const saveRecipesAsync = (category) => (dispatch) => {
-  console.log(category)
   fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
   ).then((response) => {
