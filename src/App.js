@@ -1,6 +1,7 @@
-import Typography from '@material-ui/core/Typography';
+import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import Recipes from "./features/recipeList/Recipes";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
             <h2>Receita Número 1</h2>
           </Route>
           <Route path="/receitas">
-            <h2>Lista de Receitas</h2>
+            <Recipes />
           </Route>
           <Route path="/">
             <Typography variant="h1" gutterBottom>
