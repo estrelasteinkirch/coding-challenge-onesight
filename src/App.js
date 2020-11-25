@@ -5,22 +5,25 @@ import LoginPage from "./features/login/LoginPage";
 import RecipeDetailsPage from "./features/recipeDetails/RecipeDetailsPage";
 import RecipesPage from "./features/recipeList/RecipesPage";
 import Navbar from "./components/Navbar";
+import { Container } from "@material-ui/core";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <PrivateRoute path="/receitas/:id">
-          <RecipeDetailsPage />
-        </PrivateRoute>
-        <PrivateRoute path="/receitas">
-          <RecipesPage />
-        </PrivateRoute>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-      </Switch>
+      <Container>
+        <Switch>
+          <PrivateRoute path="/receitas/:id">
+            <RecipeDetailsPage />
+          </PrivateRoute>
+          <PrivateRoute path="/receitas">
+            <RecipesPage />
+          </PrivateRoute>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+        </Switch>
+      </Container>
     </Router>
   );
 }

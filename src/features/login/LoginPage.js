@@ -1,17 +1,18 @@
-import { Box, Button, Container } from "@material-ui/core";
+import { Box, Button, Container, Grid, Snackbar } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { setLogin, selectLogin } from "./loginSlice";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
+import Alert from "@material-ui/lab/Alert";
 import theme from "../../css/MuiTheme";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(2),
-      width: 200,
+      width: 300,
     },
   },
 }));
@@ -38,29 +39,40 @@ export default function LoginPage() {
   return loggedIn ? (
     <Redirect to="/receitas" />
   ) : (
-    <div>
-      <form
-        className={classes.root}
-        onSubmit={handleSubmit}
-        noValidate
-        autoComplete="off"
-      >
+    <form
+      className={classes.root}
+      onSubmit={handleSubmit}
+      noValidate
+      autoComplete="off"
+    >
+      <Grid container spacing={2}>
         {formError ? (
-          <Box component="span">Usuário ou Senha Incorretos</Box>
+          <Grid item xs={12}>
+            <Alert elevation={3} severity="error">
+              Usuário ou Senha Incorretos!
+            </Alert>
+          </Grid>
         ) : null}
-        <TextField
-          label="Usuário"
-          value={user}
-          onChange={(event) => setUser(event.target.value)}
-        />
-        <TextField
-          label="Senha"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-
-        <Button type="submit">Fazer Login</Button>
-      </form>
-    </div>
+        <Grid container item justify="center" xs={12}>
+          <TextField
+            label="Usuário"
+            value={user}
+            onChange={(event) => setUser(event.target.value)}
+          />
+        </Grid>
+        <Grid container item justify="center" xs={12}>
+          <TextField
+            label="Senha"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </Grid>
+        <Grid container item justify="center" xs={12}>
+          <Button type="submit" variant="contained" color="primary">
+            Fazer Login
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
   );
 }
