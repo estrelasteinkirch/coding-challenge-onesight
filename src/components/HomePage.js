@@ -21,7 +21,6 @@ export default function HomePage() {
       justify="center"
       alignItems="center"
       className={classes.root}
-      xs={12}
     >
       <Grid item xs={12}>
         <Typography className={classes.title} align="center" variant="h2">
