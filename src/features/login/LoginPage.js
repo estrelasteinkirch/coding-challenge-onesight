@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Snackbar } from "@material-ui/core";
+import {  Button,  Grid } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { setLogin, selectLogin } from "./loginSlice";
@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
 import Alert from "@material-ui/lab/Alert";
-import theme from "../../css/MuiTheme";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +37,7 @@ export default function LoginPage() {
   };
 
   return loggedIn ? (
-    <Redirect to="/receitas" />
+    <Redirect to="/recipes" />
   ) : (
     <form
       className={classes.root}
@@ -49,13 +49,13 @@ export default function LoginPage() {
         {formError ? (
           <Grid item xs={12}>
             <Alert elevation={3} severity="error">
-              Usuário ou Senha Incorretos!
+              Incorrect user or password 
             </Alert>
           </Grid>
         ) : null}
         <Grid container item justify="center" xs={12}>
           <TextField
-            label="Usuário"
+            label="Username"
             autoFocus={true}
             value={user}
             onChange={(event) => setUser(event.target.value)}
@@ -63,7 +63,7 @@ export default function LoginPage() {
         </Grid>
         <Grid container item justify="center" xs={12}>
           <TextField
-            label="Senha"
+            label="Password"
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -71,7 +71,7 @@ export default function LoginPage() {
         </Grid>
         <Grid container item justify="center" xs={12}>
           <Button type="submit" variant="contained" color="primary">
-            Fazer Login
+            Login
           </Button>
         </Grid>
       </Grid>
