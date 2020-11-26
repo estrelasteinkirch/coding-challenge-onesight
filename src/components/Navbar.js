@@ -5,13 +5,15 @@ import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLogin, setLogin } from "../features/login/loginSlice";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core";
+import { Box, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    flexGrow: 1,
     fontFamily: "Oleo Script Swash Caps",
-    // fontSize: 1.5rem,
+    textTransform: "none",
+  },
+  grow: {
+    flexGrow: 1,
   },
   root: {
     marginBottom: theme.spacing(2),
@@ -27,16 +29,20 @@ export default function Navbar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h5">
-            Receitaria
-          </Typography>
+          <Box className={classes.grow}>
+            <Button color="inherit" component={Link} to="/">
+              <Typography className={classes.title} variant="h5">
+                Receitaria
+              </Typography>
+            </Button>
+          </Box>
           <Button
             color="inherit"
             component={Link}
-            to="/receitas"
+            to="/recipes"
             disabled={!loggedIn}
           >
-            Receitas
+            Recipes
           </Button>
           {loggedIn ? (
             <Button color="inherit" onClick={() => dispatch(setLogin(false))}>
