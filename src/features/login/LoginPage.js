@@ -56,6 +56,7 @@ export default function LoginPage() {
         <Grid container item justify="center" xs={12}>
           <TextField
             label="Usuário"
+            autoFocus={true}
             value={user}
             onChange={(event) => setUser(event.target.value)}
           />
@@ -63,6 +64,7 @@ export default function LoginPage() {
         <Grid container item justify="center" xs={12}>
           <TextField
             label="Senha"
+            type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
