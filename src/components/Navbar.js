@@ -10,6 +10,8 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
+    fontFamily: "Oleo Script Swash Caps",
+    // fontSize: 1.5rem,
   },
   root: {
     marginBottom: theme.spacing(2),
@@ -25,7 +27,7 @@ export default function Navbar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h6">
+          <Typography className={classes.title} variant="h5">
             Receitaria
           </Typography>
           <Button
