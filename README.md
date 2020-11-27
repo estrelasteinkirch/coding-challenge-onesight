@@ -1,4 +1,4 @@
-# Projeto Lista de Receita - Receitaria
+# Projeto Lista de Receitas - Receitaria
 
 Este é um projeto responsivo com a API Pública [MealDB](https://www.themealdb.com/api.php).
 
