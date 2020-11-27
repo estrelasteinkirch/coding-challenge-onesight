@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Projeto Lista de Receita - Receitaria
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto responsivo com a API Pública [MealDB](https://www.themealdb.com/api.php).
 
-## Available Scripts
+## Instruções de instalação
 
-In the project directory, you can run:
+Para instalar as dependências, você pode executar no diretório do projeto o seguinte comando:
 
-### `yarn start`
+#### `yarn install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para iniciar o projeto, você pode executar:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### `yarn start`
 
-### `yarn test`
+Abra [http://localhost:3000](http://localhost:3000) para vê-lo no navegador.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Login
 
-### `yarn build`
+O login é uma propriedade na Store que define se o usuário está logado e, se estiver, ele tem acesso a outras rotas, como `/recipes` e `/recipes/:id`. Ele não é uma autenticação real.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para este projeto, o usuário e a senha são:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+user: admin
+password: admin
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tecnologias Utilizadas
 
-### `yarn eject`
+- [Create React App](https://github.com/facebook/create-react-app): utilizado para fazer o bootstrap da estrutura do projeto.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [React Router](https://reactrouter.com/): ferramenta utilizada para lidar com as rotas em uma single-page application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [Redux](redux.js.org/): utilizado para gerenciar o estado da aplicação.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [Material UI](https://material-ui.com/): biblioteca de componentes React utilizado para fazer todo design do projeto.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [React Select](https://react-select.com/home): utilizado para fazer o Select das categorias das receitas.
 
-## Learn More
+## Considerações sobre o Projeto
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+A API MealDB não apresentava nenhum endpoint que retornava todas as receitas, então a solução foi [filtrar por categorias](https://www.themealdb.com/api/json/v1/1/categories.php) utilizando o React Select.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Com a categoria escolhida, uma lista com as fotos, nome e link para mais detalhes da receita aparece utilizando outro endpoint, [filtrando por categoria](https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood).
+Para essa visualização, foi utilizado o componente Grid List do Material UI.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ao clicar no botão de Detalhes, a página da receita escolhida é renderizada. Nesta página, há, além da foto e do nome da receita, os Ingredientes e o Modo de Preparo. Ao final da página, é incluído um link do YouTube de preparação da receita. Todas as informações foram retiradas do [endpoint com filtro por ID](https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772).
